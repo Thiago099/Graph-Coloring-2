@@ -137,8 +137,8 @@ namespace Graph_Coloring
                         active(passive_priority_id[i]);
                     }
                 }
-                max = c-1;
-                true_max = c-1;
+                max = c;
+                true_max = c;
                 c++;
             }
             if (max < 0) max = 0;

@@ -84,19 +84,53 @@ namespace Graph_Coloring
                             if (graph[con2[m][j]] == c)
                             {
                                 con2[con2[m][j]].Remove(m);
+                                for (int k = 0; k < con2[m].Count(); k++)
+                                {
+                                    for (int l = 0; l < con2[con2[m][k]].Count(); l++)
+                                    {
+                                        if (con2[con2[m][k]][l] == con2[m][j])
+                                            triangles[con2[m][j]]--;
+                                    }
+                                }
+                                for (int i = 0; i < triangles.Count(); i++)
+                                {
+                                    var mi = priority.Mind(triangles[i]);
+                                    priority.Match(mi, triangles[i]);
+                                    priority_id.Match(mi, i);
+                                }
                                 graph[con2[m][j]]++;
                                 pass.Add(con2[m][j]);
                                 busy = true;
                             }
                         }
-                        foreach (var i in pass)
-                            passive(i);
+                        List<int> active_priority = new List<int>();
+                        List<int> active_priority_id = new List<int>();
+                        for (int j = 0; j < pass.Count(); j++)
+                        {
+                            var mi = active_priority.Mind(triangles[pass[j]]);
+                            active_priority.Match(mi, triangles[pass[j]]);
+                            active_priority_id.Match(mi, j);
+                        }
+                        for (int j = active_priority_id.Count()-1; j >= 0; j--)
+                        {
+                            passive(active_priority_id[j]);
+                        }
                     }
                 }
                 void passive(int m)
                 {
-                    foreach (var i in con2[m])
-                        active(i);
+                    List<int> passive_priority = new List<int>();
+                    List<int> passive_priority_id = new List<int>();
+                    for (int i = 0; i < con2[m].Count(); i++)
+                    {
+                        var mi = passive_priority.Mind(triangles[con2[m][i]]);
+                        passive_priority.Match(mi, triangles[con2[m][i]]);
+                        passive_priority_id.Match(mi, i);
+                    }
+                    for (int i = passive_priority_id.Count()-1; i >= 0 ; i--)
+                    {
+                        active(passive_priority_id[i]);
+                    }
                 }
                 c++;
             }

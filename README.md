@@ -1,3 +1,6 @@
+# Description
+This algorithim colors the graph with the minimun ammount of colors possible without having two of the same color connected
+
 # Controls
 
 ## Mouse
@@ -11,6 +14,5 @@
     Left Arrow more colors
     Right Arrow less colors
 
-the graph is colored with the minimun ammount of colors possible but
-you can reduce the number of display colors to see how the program works
+you can reduce the limit of display colors to see how the program works
 as it fix a point in some color on every interation

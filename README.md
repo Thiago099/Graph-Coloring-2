@@ -1,5 +1,6 @@
 # Description
-This algorithim most of the time colors the graph with the minimun ammount of colors possible without having two of the same color connected
+This algorithim the time colors the graph with the minimun ammount of colors possible without having two of the same color connected.
+there is some bugs but it colors graphs most of the time with the minimun ammount of colors.
 
 # Controls
 

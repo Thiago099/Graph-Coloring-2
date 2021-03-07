@@ -8,7 +8,6 @@
 ## Keyboard
     F5 Save
     F9 Load
-    
     Left Arrow more colors
     Right Arrow less colors
 

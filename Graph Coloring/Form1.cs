@@ -99,7 +99,6 @@ namespace Graph_Coloring
                         active(i);
                 }
                 c++;
-                break;
             }
         }
         public Form1()

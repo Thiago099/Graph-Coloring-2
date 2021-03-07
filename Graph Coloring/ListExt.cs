@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-static class ListExt// make this class somehow more responsable for the word
-                    // find a way to separate the search algorithm from the functions
+static class ListExt
+                    
 {
     public static List<T> Sort<T>(this T[] input)where T:IComparable<T>
         {

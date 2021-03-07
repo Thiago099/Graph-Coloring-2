@@ -48,10 +48,15 @@ namespace Graph_Coloring
                     {
                         for (int k = 0; k < con2[con2[i][j]].Count(); k++)
                         {
-                            if (con2[con2[i][j]][k] == i)
+                            if (con2[con2[i][j]][k] == i) continue;
+                            for (int l = 0; l < con2[con2[con2[i][j]][k]].Count(); l++)
                             {
-                                triangles[i]++;
+                                if (con2[con2[con2[i][j]][k]][l] == i)
+                                {
+                                    triangles[i]++;
+                                }
                             }
+                                
                         }
                     }
                 }
@@ -65,6 +70,7 @@ namespace Graph_Coloring
                     priority_id.Match(m, i);
                 }
 
+                
                 busy = false;
                 for (int i = priority_id.Count() - 1; i >= 0; i--)
                     active(priority_id[i]);
@@ -93,6 +99,7 @@ namespace Graph_Coloring
                         active(i);
                 }
                 c++;
+                break;
             }
         }
         public Form1()
@@ -200,7 +207,7 @@ namespace Graph_Coloring
                 var ret = new Rectangle(pos[i].X - 16 / 2, pos[i].Y - 16 / 2, 16, 16);
                 g.FillEllipse(color[graph[i]], ret);
                 g.DrawEllipse(Pens.White, ret);
-                // g.DrawString(graph[i].ToString(),SystemFonts.CaptionFont, Brushes.Cyan, pos[i].X+8, pos[i].Y+8);
+                g.DrawString(i.ToString(),SystemFonts.CaptionFont, Brushes.Cyan, pos[i].X+8, pos[i].Y+8);
             }
         }
         bool drag = false;

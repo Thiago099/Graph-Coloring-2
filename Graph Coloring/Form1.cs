@@ -58,7 +58,7 @@ namespace Graph_Coloring
                 List<int> priority = new List<int>();
                 List<int> priority_id = new List<int>();
 
-                for (int i = triangles.Count()-1; i >= 0; i--)
+                for (int i = 0; i < triangles.Count(); i++)
                 {
                     var m = priority.Mind(triangles[i]);
                     priority.Match(m, triangles[i]);

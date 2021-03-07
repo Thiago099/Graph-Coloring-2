@@ -73,7 +73,15 @@ namespace Graph_Coloring
                 
                 busy = false;
                 for (int i = priority_id.Count() - 1; i >= 0; i--)
+                {
                     active(priority_id[i]);
+                    for (int j = 0; j < triangles.Count(); j++)
+                    {
+                        var mi = priority.Mind(triangles[i]);
+                        priority.Match(mi, triangles[i]);
+                        priority_id.Match(mi, i);
+                    }
+                }
                 void active(int m)
                 {
                     if (graph[m] == c)
@@ -91,12 +99,6 @@ namespace Graph_Coloring
                                         if (con2[con2[m][k]][l] == con2[m][j])
                                             triangles[con2[m][j]]--;
                                     }
-                                }
-                                for (int i = 0; i < triangles.Count(); i++)
-                                {
-                                    var mi = priority.Mind(triangles[i]);
-                                    priority.Match(mi, triangles[i]);
-                                    priority_id.Match(mi, i);
                                 }
                                 graph[con2[m][j]]++;
                                 pass.Add(con2[m][j]);

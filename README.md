@@ -15,4 +15,4 @@ This algorithim colors the graph with the minimun ammount of colors possible wit
     Right Arrow less colors
 
 you can reduce the limit of display colors to see how the program works
-as it fix a point in some color on every interation
+as it fix some points in the interation color

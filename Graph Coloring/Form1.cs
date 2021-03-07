@@ -141,8 +141,6 @@ namespace Graph_Coloring
                 true_max = c;
                 c++;
             }
-            if (max < 0) max = 0;
-            if (true_max < 0) true_max = 0;
         }
         public Form1()
         {
@@ -249,7 +247,7 @@ namespace Graph_Coloring
                 var ret = new Rectangle(pos[i].X - 16 / 2, pos[i].Y - 16 / 2, 16, 16);
                 g.FillEllipse(color[cap(graph[i],max)], ret);
                 g.DrawEllipse(Pens.White, ret);
-                g.DrawString(i.ToString(),SystemFonts.CaptionFont, Brushes.Cyan, pos[i].X+8, pos[i].Y+8);
+                //g.DrawString(i.ToString(),SystemFonts.CaptionFont, Brushes.Cyan, pos[i].X+8, pos[i].Y+8);
             }
         }
         bool drag = false;

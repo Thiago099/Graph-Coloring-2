@@ -114,7 +114,7 @@ namespace Graph_Coloring
                         {
                             var mi = active_priority.Mind(triangles[pass[j]]);
                             active_priority.Match(mi, triangles[pass[j]]);
-                            active_priority_id.Match(mi, j);
+                            active_priority_id.Match(mi, pass[j]);
                         }
                         for (int j = active_priority_id.Count()-1; j >= 0; j--)
                         {
@@ -130,7 +130,7 @@ namespace Graph_Coloring
                     {
                         var mi = passive_priority.Mind(triangles[con2[m][i]]);
                         passive_priority.Match(mi, triangles[con2[m][i]]);
-                        passive_priority_id.Match(mi, i);
+                        passive_priority_id.Match(mi, con2[m][i]);
                     }
                     for (int i = passive_priority_id.Count()-1; i >= 0 ; i--)
                     {

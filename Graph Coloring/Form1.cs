@@ -72,6 +72,7 @@ namespace Graph_Coloring
 
                 
                 busy = false;
+
                 for (int i = priority_id.Count() - 1; i >= 0; i--)
                 {
                     active(priority_id[i]);
@@ -136,8 +137,12 @@ namespace Graph_Coloring
                         active(passive_priority_id[i]);
                     }
                 }
+                max = c-1;
+                true_max = c-1;
                 c++;
             }
+            if (max < 0) max = 0;
+            if (true_max < 0) true_max = 0;
         }
         public Form1()
         {
@@ -218,7 +223,7 @@ namespace Graph_Coloring
         List<int> graph;
         List<Point> pos;
         List<int[]> con;
-
+        int cap(int v, int max) => v > max ? max : v;
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -242,9 +247,9 @@ namespace Graph_Coloring
             for (int i = 0; i < pos.Count; i++)
             {
                 var ret = new Rectangle(pos[i].X - 16 / 2, pos[i].Y - 16 / 2, 16, 16);
-                g.FillEllipse(color[graph[i]], ret);
+                g.FillEllipse(color[cap(graph[i],max)], ret);
                 g.DrawEllipse(Pens.White, ret);
-                //g.DrawString(i.ToString(),SystemFonts.CaptionFont, Brushes.Cyan, pos[i].X+8, pos[i].Y+8);
+                g.DrawString(i.ToString(),SystemFonts.CaptionFont, Brushes.Cyan, pos[i].X+8, pos[i].Y+8);
             }
         }
         bool drag = false;
@@ -253,6 +258,8 @@ namespace Graph_Coloring
         {
             Refresh();
         }
+        int max = 0;
+        int true_max = 0;
         bool dist(int d, int i, int x, int y)
             => (Math.Pow(pos[i].X - x, 2) + Math.Pow(pos[i].Y - y, 2)) < (d * d);
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -369,6 +376,9 @@ namespace Graph_Coloring
             {
                 case Keys.F5: save(); break;
                 case Keys.F9: load(); break;
+                case Keys.Right: max=max<true_max?max+1:true_max; Refresh(); break;
+                case Keys.Left: max=max>0?max-1:0; Refresh(); break;
+                
             }
         }
     }

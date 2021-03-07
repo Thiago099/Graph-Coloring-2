@@ -206,7 +206,7 @@ namespace Graph_Coloring
                 var ret = new Rectangle(pos[i].X - 16 / 2, pos[i].Y - 16 / 2, 16, 16);
                 g.FillEllipse(color[graph[i]], ret);
                 g.DrawEllipse(Pens.White, ret);
-                g.DrawString(i.ToString(),SystemFonts.CaptionFont, Brushes.Cyan, pos[i].X+8, pos[i].Y+8);
+                //g.DrawString(i.ToString(),SystemFonts.CaptionFont, Brushes.Cyan, pos[i].X+8, pos[i].Y+8);
             }
         }
         bool drag = false;

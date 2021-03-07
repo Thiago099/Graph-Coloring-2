@@ -75,11 +75,13 @@ namespace Graph_Coloring
                 for (int i = priority_id.Count() - 1; i >= 0; i--)
                 {
                     active(priority_id[i]);
+                    priority = new List<int>();
+                    priority_id = new List<int>();
                     for (int j = 0; j < triangles.Count(); j++)
                     {
-                        var mi = priority.Mind(triangles[i]);
-                        priority.Match(mi, triangles[i]);
-                        priority_id.Match(mi, i);
+                        var mi = priority.Mind(triangles[j]);
+                        priority.Match(mi, triangles[j]);
+                        priority_id.Match(mi, j);
                     }
                 }
                 void active(int m)

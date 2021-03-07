@@ -13,5 +13,6 @@
 the graph is colored with the minimun ammount of colors possible but
 you can reduce the number of display colors to see how the program works
 as it fix a point in some color on every interation
+
     Left Arrow more colors
     Right Arrow less colors

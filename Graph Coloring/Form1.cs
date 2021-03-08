@@ -90,21 +90,25 @@ namespace Graph_Coloring
                     if (graph[m] == c)
                     {
                         List<int> pass = new List<int>();
-                        for (int j = 0; j < con2[m].Count(); j++)
+                        for (int i = 0; i < con2[m].Count(); i++)
                         {
-                            if (graph[con2[m][j]] == c)
+                            if (graph[con2[m][i]] == c)
                             {
-                                con2[con2[m][j]].Remove(m);
-                                for (int k = 0; k < con2[m].Count(); k++)
+                                con2[con2[m][i]].Remove(m);
+                                for (int j = 0; j < con2[m].Count(); j++)
                                 {
-                                    for (int l = 0; l < con2[con2[m][k]].Count(); l++)
+                                    if (con2[m][j] == con2[m][i]) continue;
+                                    for (int k = 0; k < con2[con2[m][j]].Count(); k++)
                                     {
-                                        if (con2[con2[m][k]][l] == con2[m][j])
-                                            triangles[con2[m][j]]--;
+                                        if (con2[con2[m][j]][k] == con2[m][i])
+                                        {
+                                            triangles[con2[m][i]]--; 
+                                        }
                                     }
                                 }
-                                graph[con2[m][j]]++;
-                                pass.Add(con2[m][j]);
+                                
+                                graph[con2[m][i]]++;
+                                pass.Add(con2[m][i]);
                                 busy = true;
                             }
                         }

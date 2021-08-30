@@ -1,5 +1,6 @@
 # Description
 This algorithim the time colors the graph with the minimun ammount of colors possible without having two of the same color connected.
+The focus of this project is the algorithim and not appling a clean achiteture.
 
 # Controls
 
